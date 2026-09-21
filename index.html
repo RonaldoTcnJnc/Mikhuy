@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Mikhuy conecta a Cusco con sus sabores locales favoritos.">
-  <title>Mikhuy | Sabor local, a tu puerta</title>
+  <title>Mikhuy | Pide local, come bonito</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,58 +13,115 @@
       <span class="brand-mark">M</span>
       <span>Mikhuy</span>
     </a>
-    <a class="header-link" href="#como-funciona">¿C&oacute;mo funciona?</a>
+    <nav class="main-nav" aria-label="Navegacion principal">
+      <a class="active" href="#restaurantes">Restaurantes</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#aliados">Para negocios</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button" id="favoritesButton" type="button" aria-label="Ver favoritos" aria-pressed="false">&#9825;<span class="button-label">Favoritos</span></button>
+      <button class="cart-button" id="cartButton" type="button" aria-label="Abrir carrito">Carrito <span class="cart-count" id="cartCount">0</span></button>
+    </div>
   </header>
 
   <main id="inicio">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow">Hecho en Cusco, pensado para ti</p>
-        <h1 id="hero-title">El sabor local llega <em>contigo.</em></h1>
-        <p class="hero-text">Descubre tus platos favoritos, apoya a los negocios de tu ciudad y recibe cada pedido con la calidez de casa.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#como-funciona">Explorar sabores <span aria-hidden="true">&rarr;</span></a>
-          <span class="availability"><span class="status-dot"></span>Pr&oacute;ximamente en Cusco</span>
-        </div>
+        <p class="eyebrow">Tu ciudad, servida en la mesa</p>
+        <h1 id="hero-title">Pide local.<br><em>Come bonito.</em></h1>
+        <p class="hero-text">Descubre restaurantes cusque&ntilde;os, encuentra tu pr&oacute;ximo plato favorito y recibe cada pedido con la calidez de casa.</p>
+        <form class="search-bar hero-search" id="heroSearchForm">
+          <span aria-hidden="true">&#9906;</span>
+          <input id="heroSearch" type="search" placeholder="Busca un plato o restaurante" aria-label="Buscar un plato o restaurante">
+          <button type="submit">Buscar</button>
+        </form>
+        <div class="hero-meta"><span class="status-dot"></span><strong>12 negocios abiertos</strong><span>en Cusco ahora</span></div>
       </div>
-      <div class="hero-art" aria-label="Ilustraci&oacute;n decorativa de comida local">
+      <div class="hero-art" aria-label="Ilustracion decorativa de comida local">
         <div class="sun"></div>
         <div class="mountain mountain-back"></div>
         <div class="mountain mountain-front"></div>
         <div class="plate"><span class="plate-food">&#9679;</span></div>
         <span class="art-label label-top">SABOR</span>
-        <span class="art-label label-bottom">DE AQU&Iacute;</span>
+        <span class="art-label label-bottom">DE AQUI</span>
+        <div class="floating-note"><span>Hoy se antoja</span><strong>un chiri uchu</strong></div>
       </div>
     </section>
 
-    <section class="features" id="como-funciona" aria-labelledby="features-title">
+    <section class="order-section" id="restaurantes" aria-labelledby="restaurants-title">
+      <div class="section-heading section-heading-row">
+        <div>
+          <p class="eyebrow">Selecciona y disfruta</p>
+          <h2 id="restaurants-title">Lo que se te antoja.</h2>
+        </div>
+        <div class="location-pill"><span aria-hidden="true">&#9679;</span> Cusco, Peru <span aria-hidden="true">&#8964;</span></div>
+      </div>
+      <div class="category-list" role="tablist" aria-label="Categorias de comida">
+        <button class="category active" type="button" data-category="Todos" role="tab" aria-selected="true">Todo</button>
+        <button class="category" type="button" data-category="Criolla" role="tab" aria-selected="false">Comida criolla</button>
+        <button class="category" type="button" data-category="Andina" role="tab" aria-selected="false">Sabor andino</button>
+        <button class="category" type="button" data-category="Cafe" role="tab" aria-selected="false">Cafe y dulce</button>
+        <button class="category" type="button" data-category="Saludable" role="tab" aria-selected="false">Saludable</button>
+      </div>
+      <div class="catalog-toolbar">
+        <p id="resultSummary">Mostrando <strong>6 lugares</strong> cerca de ti</p>
+        <label class="sort-control">Ordenar por
+          <select id="sortSelect" aria-label="Ordenar restaurantes">
+            <option value="recommended">Recomendados</option>
+            <option value="rating">Mejor puntuacion</option>
+            <option value="time">Entrega mas rapida</option>
+          </select>
+        </label>
+      </div>
+      <div class="restaurant-grid" id="restaurantGrid"></div>
+      <p class="empty-state" id="emptyState" hidden>No encontramos resultados. Prueba con otro plato o categoria.</p>
+    </section>
+
+    <section class="steps-section" id="como-funciona" aria-labelledby="steps-title">
       <div class="section-heading">
-        <p class="eyebrow">Una nueva forma de pedir</p>
-        <h2 id="features-title">Lo local sabe mejor.</h2>
+        <p class="eyebrow">Simple de principio a fin</p>
+        <h2 id="steps-title">Tu almuerzo,<br><em>en tres pasos.</em></h2>
       </div>
-      <div class="feature-grid">
-        <article class="feature">
-          <span class="feature-number">01</span>
-          <h3>Elige lo que amas</h3>
-          <p>Encuentra restaurantes y emprendimientos locales en un solo lugar.</p>
-        </article>
-        <article class="feature">
-          <span class="feature-number">02</span>
-          <h3>Pide sin complicaciones</h3>
-          <p>Arma tu pedido de forma r&aacute;pida, clara y segura.</p>
-        </article>
-        <article class="feature">
-          <span class="feature-number">03</span>
-          <h3>Disfruta lo nuestro</h3>
-          <p>Recibe comida con identidad y ayuda a crecer a Cusco.</p>
-        </article>
+      <div class="steps-grid">
+        <article class="step"><span>01</span><div><h3>Explora</h3><p>Conoce restaurantes locales y sus platos estrella.</p></div></article>
+        <article class="step"><span>02</span><div><h3>Arma tu pedido</h3><p>Agrega tus favoritos y revisa el total sin sorpresas.</p></div></article>
+        <article class="step"><span>03</span><div><h3>Disfruta</h3><p>Te avisamos cuando tu comida este en camino.</p></div></article>
       </div>
+    </section>
+
+    <section class="partner-banner" id="aliados" aria-labelledby="partner-title">
+      <div><p class="eyebrow">Crece con tu comunidad</p><h2 id="partner-title">Tu cocina merece<br>estar en Mikhuy.</h2></div>
+      <button class="button button-light" id="partnerButton" type="button">Quiero ser aliado <span aria-hidden="true">&rarr;</span></button>
     </section>
   </main>
 
   <footer class="site-footer">
     <span class="brand brand-small"><span class="brand-mark">M</span> Mikhuy</span>
-    <span>Comida local, coraz&oacute;n cusque&ntilde;o.</span>
+    <span>Comida local, corazon cusqueno.</span>
+    <span>Hecho con cari&ntilde;o en Cusco</span>
   </footer>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-labelledby="cartTitle" aria-hidden="true">
+    <div class="drawer-header"><div><p class="eyebrow">Tu seleccion</p><h2 id="cartTitle">Tu carrito</h2></div><button class="close-button" id="closeCart" type="button" aria-label="Cerrar carrito">&times;</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-empty" id="cartEmpty"><span>&#127869;</span><strong>Tu carrito esta vacio</strong><p>Agrega algo rico para comenzar.</p></div>
+    <div class="cart-summary" id="cartSummary" hidden><div><span>Subtotal</span><strong id="cartSubtotal">S/ 0.00</strong></div><div><span>Delivery</span><strong>S/ 4.90</strong></div><div class="summary-total"><span>Total</span><strong id="cartTotal">S/ 0.00</strong></div><button class="button button-primary full-button" id="checkoutButton" type="button">Continuar pedido <span aria-hidden="true">&rarr;</span></button></div>
+  </aside>
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <dialog class="modal" id="menuDialog" aria-labelledby="menuDialogTitle">
+    <div class="modal-header"><div><p class="eyebrow">Menu del restaurante</p><h2 id="menuDialogTitle">Elige tu plato</h2><p id="menuDialogDescription"></p></div><button class="close-button" id="closeMenu" type="button" aria-label="Cerrar menu">&times;</button></div>
+    <div class="menu-options" id="menuOptions"></div>
+  </dialog>
+  <dialog class="modal partner-modal" id="partnerDialog" aria-labelledby="partnerDialogTitle">
+    <div class="modal-header"><div><p class="eyebrow">Aliados Mikhuy</p><h2 id="partnerDialogTitle">Cu&eacute;ntanos de tu cocina.</h2></div><button class="close-button" id="closePartner" type="button" aria-label="Cerrar formulario">&times;</button></div>
+    <form id="partnerForm" class="partner-form">
+      <label>Nombre del negocio<input name="business" required placeholder="Ej. Sabor de la Abuela"></label>
+      <label>Tu nombre<input name="contact" required placeholder="Ej. Rosa Quispe"></label>
+      <label>Celular de contacto<input name="phone" required inputmode="tel" placeholder="987 654 321"></label>
+      <button class="button button-primary full-button" type="submit">Enviar solicitud <span aria-hidden="true">&rarr;</span></button>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
 </body>
 </html>
